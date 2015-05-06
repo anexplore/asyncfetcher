@@ -2,6 +2,7 @@ package com.fd.asyncfetcher;
 
 import org.apache.http.Header;
 import org.apache.http.client.methods.HttpUriRequest;
+
 public class HttpResponseWrapper {
 	public int redirectCount = 0;
 	public boolean needRedirect = false;
@@ -11,15 +12,14 @@ public class HttpResponseWrapper {
 	public Header[] headers = null;
 	public long contentLength = 0;
 	public long headerLength = 0;
-	
-	
+
 	public Header[] getAllHeader() {
 		return headers;
 	}
 
 	public void setHeaders(Header[] allHeader) {
 		headers = new Header[allHeader.length];
-		System.arraycopy(allHeader, 0, headers, 0,allHeader.length);
+		System.arraycopy(allHeader, 0, headers, 0, allHeader.length);
 	}
 
 	public String getContent() {
@@ -49,6 +49,7 @@ public class HttpResponseWrapper {
 	public long getHeaderLength() {
 		return headerLength;
 	}
+
 	public Header[] getHeaders() {
 		return headers;
 	}
@@ -60,5 +61,5 @@ public class HttpResponseWrapper {
 	public void setRealUrl(String realUrl) {
 		this.realUrl = realUrl;
 	}
-	
+
 }
