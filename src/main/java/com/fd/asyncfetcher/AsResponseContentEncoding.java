@@ -38,7 +38,6 @@ import org.apache.http.HttpException;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpResponseInterceptor;
 import org.apache.http.annotation.Immutable;
-import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.DecompressingEntity;
 import org.apache.http.client.entity.DeflateInputStream;
 import org.apache.http.client.entity.InputStreamFactory;
