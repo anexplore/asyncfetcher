@@ -21,7 +21,6 @@ import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.client.protocol.ResponseContentEncoding;
 import org.apache.http.concurrent.FutureCallback;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
@@ -72,7 +71,7 @@ public class AsyncHttpClientFetcher {
 	private int ioThreadNum = 200;
 	private String userAgent = "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)";
 	private HttpHost proxy;
-	private ResponseContentEncoding encodingProcessor = new ResponseContentEncoding();
+	private AsResponseContentEncoding encodingProcessor = new AsResponseContentEncoding();
 
 	/**
 	 * after set all configs, we should always call init before any connection
@@ -189,7 +188,7 @@ public class AsyncHttpClientFetcher {
 					throws ClientProtocolException, IOException {
 				try {
 					encodingProcessor.process(response, null);
-				} catch (HttpException e) {
+				} catch (Exception e) {
 				}
 				HttpResponseWrapper wrapper = new HttpResponseWrapper();
 				int status = response.getStatusLine().getStatusCode();
@@ -304,7 +303,7 @@ public class AsyncHttpClientFetcher {
 					throws ClientProtocolException, IOException {
 				try {
 					encodingProcessor.process(response, null);
-				} catch (HttpException e) {
+				} catch (Exception e) {
 				}
 				int status = response.getStatusLine().getStatusCode();
 				if (status >= 200 && status < 300) {
