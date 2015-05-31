@@ -49,7 +49,8 @@ import org.apache.http.util.ByteArrayBuffer;
 import org.apache.http.util.EntityUtils;
 import org.apache.http.util.TextUtils;
 
-import com.fd.DnsCache;
+import com.fd.dnscache.DnsCache;
+
 
 public class AsyncHttpClientFetcher {
 	private CloseableHttpAsyncClient client;
@@ -174,7 +175,7 @@ public class AsyncHttpClientFetcher {
 		}
 		return s.split(" *, *");
 	}
-
+	
 	public void httpGetWithHeaders(final HttpGet httpget,
 			final ProcessTask<HttpResponseWrapper> process) throws Exception {
 		if (!isValid)
@@ -191,6 +192,7 @@ public class AsyncHttpClientFetcher {
 				}
 				HttpResponseWrapper wrapper = new HttpResponseWrapper();
 				int status = response.getStatusLine().getStatusCode();
+				wrapper.status = status;
 				if (status >= 200 && status < 300) {
 					wrapper.needRedirect = false;
 					HttpEntity entity = response.getEntity();

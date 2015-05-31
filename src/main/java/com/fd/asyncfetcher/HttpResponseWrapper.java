@@ -12,7 +12,8 @@ public class HttpResponseWrapper {
 	public Header[] headers = null;
 	public long contentLength = 0;
 	public long headerLength = 0;
-
+	public int status = 200;
+	
 	public Header[] getAllHeader() {
 		return headers;
 	}
